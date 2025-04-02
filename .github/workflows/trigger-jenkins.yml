@@ -10,4 +10,4 @@ jobs:
     steps:
       - name: Trigger Jenkins build
         run: |
-          curl -X POST http://ip10-0-2-4-cvmjg8k34iqh49gh850g-8080.direct.lab-boris.fr --user "dceleste:11bfef75c844ca308d85a8725f513fd715"
+          curl -X POST http://ip10-0-2-4-cvmjg8k34iqh49gh850g-8080.direct.lab-boris.fr --user "dceleste:116532163416423688ba93e0092ea69634"
