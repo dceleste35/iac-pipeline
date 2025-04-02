@@ -10,15 +10,19 @@ provider "aws" {
   }
 }
 
-resource "random_id" "ami_id" {
-  byte_length = 4
+# Récupérer la date/heure actuelle
+resource "time_static" "build_time" {}
+
+# Nettoyer le timestamp pour l'AMI ID
+locals {
+  date_suffix = replace(replace(replace(time_static.build_time.rfc3339, "[:T+-]", ""), "Z", ""), ".", "")
 }
 
 resource "aws_instance" "demo" {
-  ami = "ami-${random_id.ami_id.hex}"
+  ami           = "ami-${local.date_suffix}"
   instance_type = "t2.micro"
 
   tags = {
-    Name = "Commit-${random_id.ami_id.hex}"
+    Name = "Build-${local.date_suffix}"
   }
 }
