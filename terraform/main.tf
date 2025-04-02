@@ -15,7 +15,7 @@ resource "random_id" "ami_id" {
 }
 
 resource "aws_instance" "demo" {
-  ami = "ami-${random_id.ami_id.hex}"  # simule un nouvel AMI à chaque fois
+  ami = "ami-${random_id.ami_id.hex}"
   instance_type = "t2.micro"
 
   tags = {
